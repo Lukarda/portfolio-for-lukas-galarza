@@ -5,13 +5,13 @@ import { useInView } from "@/hooks/use-in-view"
 import { ExternalLink, Github, Folder } from "lucide-react"
 
 const projects = [
-  {
-    title: "Cloud Dashboard",
+   {
+    title: "Trabajo Web Final",
     description:
-      "Panel de administracion para monitoreo de infraestructura cloud. Metricas en tiempo real, alertas y gestion de recursos.",
-    tags: ["React", "TypeScript", "AWS", "Tailwind CSS"],
-    github: "#",
-    live: "#",
+      "Trabajo final de la materia Programación Web. Sitio web completo con HTML, CSS y JavaScript.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/Lukarda/TrabajowebFinal.github.io",
+    live: "https://lukarda.github.io/TrabajowebFinal.github.io/",
   },
   {
     title: "Task Flow API",
@@ -22,21 +22,33 @@ const projects = [
     live: "#",
   },
   {
-    title: "DevConnect",
+    title: "Final - Plataformas de Desarrollo",
     description:
-      "Red social para desarrolladores. Perfiles, publicaciones, sistema de mensajeria y busqueda por skills.",
-    tags: ["Next.js", "Prisma", "Supabase", "Tailwind CSS"],
-    github: "#",
-    live: "#",
-  },
-  {
-    title: "CLI Deploy Tool",
-    description:
-      "Herramienta de linea de comandos para automatizar deploys en multiples entornos cloud con configuracion YAML.",
-    tags: ["Python", "Docker", "CI/CD", "Shell"],
-    github: "#",
+      "Trabajo final de Plataformas de Desarrollo en Escuela Da Vinci.",
+    tags: ["JavaScript"],
+    github: "https://github.com/AnthonyNadsat/final-pd-acn4bv-galarza-salazar",
     live: null,
   },
+  
+  {
+    title: "Final - Aplicaciones Móviles",
+    description:
+      "Parcial evolutivo de Aplicaciones Móviles en Escuela Da Vinci.",
+    tags: ["Java", "Android"],
+    github: "https://github.com/AnthonyNadsat/final-am-acn4bv-galarza-salazar",
+    live: null,
+  },
+
+  {
+      title: "Yenny",
+      description:
+        "Proyecto Python de Análisis y Metodologías de Sistemas en Escuela Da Vinci.",
+      tags: ["Python"],
+      github: "https://github.com/Beeejs/Yenny",
+      live: null,
+    },
+
+
 ]
 
 export function Projects() {
