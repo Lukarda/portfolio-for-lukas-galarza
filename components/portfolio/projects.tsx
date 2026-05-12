@@ -5,13 +5,13 @@ import { useInView } from "@/hooks/use-in-view"
 import { ExternalLink, Github, Folder } from "lucide-react"
 
 const projects = [
-   {
+  {
     title: "Trabajo Web Final",
-    description:
-      "Trabajo final de la materia Programación Web. Sitio web completo con HTML, CSS y JavaScript.",
+    description: "Trabajo final de la materia Programación Web. Sitio web completo con HTML, CSS y JavaScript.",
     tags: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/Lukarda/TrabajowebFinal.github.io",
     live: "https://lukarda.github.io/TrabajowebFinal.github.io/",
+    image: "/images/StyleSneakers.png",
   },
   {
     title: "Task Flow API",
@@ -22,21 +22,21 @@ const projects = [
     live: "#",
   },
   {
-    title: "Final - Plataformas de Desarrollo",
-    description:
-      "Trabajo final de Plataformas de Desarrollo en Escuela Da Vinci.",
-    tags: ["JavaScript"],
-    github: "https://github.com/AnthonyNadsat/final-pd-acn4bv-galarza-salazar",
+    title: "Parcial 1 - Plataformas de Desarrollo",
+    description: "Primer parcial de Plataformas de Desarrollo en Escuela Da Vinci.",
+    tags: ["CSS", "JavaScript", "HTML"],
+    github: "https://github.com/Lukarda/parcial-1-pd-acn4bv-galarza-salazar",
     live: null,
+    image: "/images/BugLogweb.jpeg",
   },
   
-  {
+   {
     title: "Final - Aplicaciones Móviles",
-    description:
-      "Parcial evolutivo de Aplicaciones Móviles en Escuela Da Vinci.",
+    description: "Parcial evolutivo de Aplicaciones Móviles en Escuela Da Vinci.",
     tags: ["Java", "Android"],
     github: "https://github.com/AnthonyNadsat/final-am-acn4bv-galarza-salazar",
     live: null,
+    image: "/images/BugLogmobile.jpeg",
   },
 
   {
