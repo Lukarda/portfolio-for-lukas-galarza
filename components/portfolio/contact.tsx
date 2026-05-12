@@ -21,7 +21,7 @@ const socials = [
     icon: Mail,
     label: "Email",
     href: "mailto:lgalarza145@gmail.com",
-    handle: "lukas@email.com",
+    handle: "lgalarza145@gmail.com",
   },
   {
     icon: MapPin,
