@@ -1,0 +1,146 @@
+"use client"
+
+import { useRef } from "react"
+import { useInView } from "@/hooks/use-in-view"
+import { ExternalLink, Github, Folder } from "lucide-react"
+
+const projects = [
+  {
+    title: "Cloud Dashboard",
+    description:
+      "Panel de administracion para monitoreo de infraestructura cloud. Metricas en tiempo real, alertas y gestion de recursos.",
+    tags: ["React", "TypeScript", "AWS", "Tailwind CSS"],
+    github: "#",
+    live: "#",
+  },
+  {
+    title: "Task Flow API",
+    description:
+      "API RESTful para gestion de tareas y proyectos en equipo. Autenticacion JWT, roles de usuario y notificaciones.",
+    tags: ["Node.js", "Express", "PostgreSQL", "Docker"],
+    github: "#",
+    live: "#",
+  },
+  {
+    title: "DevConnect",
+    description:
+      "Red social para desarrolladores. Perfiles, publicaciones, sistema de mensajeria y busqueda por skills.",
+    tags: ["Next.js", "Prisma", "Supabase", "Tailwind CSS"],
+    github: "#",
+    live: "#",
+  },
+  {
+    title: "CLI Deploy Tool",
+    description:
+      "Herramienta de linea de comandos para automatizar deploys en multiples entornos cloud con configuracion YAML.",
+    tags: ["Python", "Docker", "CI/CD", "Shell"],
+    github: "#",
+    live: null,
+  },
+]
+
+export function Projects() {
+  const ref = useRef<HTMLElement>(null)
+  const isInView = useInView(ref, { threshold: 0.05 })
+
+  return (
+    <section id="projects" ref={ref} className="relative py-24 md:py-32">
+      {/* Subtle background accent */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-secondary/30"
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-6xl px-4 md:px-8">
+        {/* Section header */}
+        <div
+          className={`mb-16 transition-all duration-700 ${
+            isInView ? "animate-fade-up" : "opacity-0"
+          }`}
+        >
+          <span className="font-mono text-xs font-medium text-primary">
+            {"// 02. Proyectos"}
+          </span>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground md:text-4xl text-balance">
+            Trabajo seleccionado
+          </h2>
+          <div
+            className="mt-3 h-1 w-12 rounded-full bg-primary"
+            aria-hidden="true"
+          />
+        </div>
+
+        {/* Project grid */}
+        <div className="grid gap-6 md:grid-cols-2">
+          {projects.map((project, i) => (
+            <article
+              key={project.title}
+              className={`group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-500 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 ${
+                isInView ? "animate-fade-up" : "opacity-0"
+              }`}
+              style={{ animationDelay: `${(i + 1) * 150}ms` }}
+            >
+              {/* Project image placeholder */}
+              <div className="relative aspect-video overflow-hidden bg-secondary">
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-border bg-card text-primary transition-transform duration-300 group-hover:scale-110">
+                    <Folder className="h-6 w-6" />
+                  </div>
+                  <span className="font-mono text-xs text-muted-foreground">
+                    {project.title.toLowerCase().replace(/\s+/g, "-")}.preview
+                  </span>
+                </div>
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </div>
+
+              {/* Content */}
+              <div className="flex flex-col gap-4 p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                    {project.title}
+                  </h3>
+                  <div className="flex shrink-0 items-center gap-2">
+                    <a
+                      href={project.github ?? "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                      aria-label={`Ver codigo de ${project.title} en GitHub`}
+                    >
+                      <Github className="h-4 w-4" />
+                    </a>
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                        aria-label={`Ver demo de ${project.title}`}
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-md bg-primary/5 px-2.5 py-1 font-mono text-xs text-primary"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
