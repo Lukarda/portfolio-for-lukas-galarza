@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useRef } from "react"
 import { useInView } from "@/hooks/use-in-view"
 import { ExternalLink, Github, Folder } from "lucide-react"
@@ -14,14 +15,6 @@ const projects = [
     image: "/images/StyleSneakers.png",
   },
   {
-    title: "Task Flow API",
-    description:
-      "API RESTful para gestion de tareas y proyectos en equipo. Autenticacion JWT, roles de usuario y notificaciones.",
-    tags: ["Node.js", "Express", "PostgreSQL", "Docker"],
-    github: "#",
-    live: "#",
-  },
-  {
     title: "Parcial 1 - Plataformas de Desarrollo",
     description: "Primer parcial de Plataformas de Desarrollo en Escuela Da Vinci.",
     tags: ["CSS", "JavaScript", "HTML"],
@@ -29,8 +22,7 @@ const projects = [
     live: null,
     image: "/images/BugLogweb.jpeg",
   },
-  
-   {
+  {
     title: "Final - Aplicaciones Móviles",
     description: "Parcial evolutivo de Aplicaciones Móviles en Escuela Da Vinci.",
     tags: ["Java", "Android"],
@@ -38,17 +30,14 @@ const projects = [
     live: null,
     image: "/images/BugLogmobile.jpeg",
   },
-
   {
-      title: "Yenny",
-      description:
-        "Proyecto Python de Análisis y Metodologías de Sistemas en Escuela Da Vinci.",
-      tags: ["Python"],
-      github: "https://github.com/Beeejs/Yenny",
-      live: null,
-    },
-
-
+    title: "Yenny",
+    description: "Proyecto Python de Análisis y Metodologías de Sistemas en Escuela Da Vinci.",
+    tags: ["Python"],
+    github: "https://github.com/Beeejs/Yenny",
+    live: null,
+    image: null,
+  },
 ]
 
 export function Projects() {
@@ -57,14 +46,12 @@ export function Projects() {
 
   return (
     <section id="projects" ref={ref} className="relative py-24 md:py-32">
-      {/* Subtle background accent */}
       <div
         className="pointer-events-none absolute inset-0 bg-secondary/30"
         aria-hidden="true"
       />
 
       <div className="relative mx-auto max-w-6xl px-4 md:px-8">
-        {/* Section header */}
         <div
           className={`mb-16 transition-all duration-700 ${
             isInView ? "animate-fade-up" : "opacity-0"
@@ -82,7 +69,6 @@ export function Projects() {
           />
         </div>
 
-        {/* Project grid */}
         <div className="grid gap-6 md:grid-cols-2">
           {projects.map((project, i) => (
             <article
@@ -92,28 +78,35 @@ export function Projects() {
               }`}
               style={{ animationDelay: `${(i + 1) * 150}ms` }}
             >
-              {/* Project image placeholder */}
               <div className="relative aspect-video overflow-hidden bg-secondary">
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-border bg-card text-primary transition-transform duration-300 group-hover:scale-110">
-                    <Folder className="h-6 w-6" />
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-border bg-card text-primary transition-transform duration-300 group-hover:scale-110">
+                      <Folder className="h-6 w-6" />
+                    </div>
+                    <span className="font-mono text-xs text-muted-foreground">
+                      {project.title.toLowerCase().replace(/\s+/g, "-")}.preview
+                    </span>
                   </div>
-                  <span className="font-mono text-xs text-muted-foreground">
-                    {project.title.toLowerCase().replace(/\s+/g, "-")}.preview
-                  </span>
-                </div>
-                {/* Hover overlay */}
+                )}
                 <div className="absolute inset-0 bg-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
 
-              {/* Content */}
               <div className="flex flex-col gap-4 p-6">
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
                     {project.title}
                   </h3>
                   <div className="flex shrink-0 items-center gap-2">
-                    <a
+                    
                       href={project.github ?? "#"}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -123,7 +116,7 @@ export function Projects() {
                       <Github className="h-4 w-4" />
                     </a>
                     {project.live && (
-                      <a
+                      
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
