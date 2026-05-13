@@ -107,7 +107,7 @@ export function Projects() {
                   </h3>
                   <div className="flex shrink-0 items-center gap-2">
                     
-                     <a href={project.github
+                     <a href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
@@ -117,7 +117,7 @@ export function Projects() {
                     </a>
                     {project.live && (
                       
-                        <a href={project.live
+                        <a href={project.live}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
