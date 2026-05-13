@@ -36,9 +36,19 @@ export function Contact() {
   const isInView = useInView(ref, { threshold: 0.1 })
   const [submitted, setSubmitted] = useState(false)
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    const form = e.currentTarget
+    const data = new FormData(form)
+
+    await fetch("https://formspree.io/f/xgodqkan", {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" },
+    })
+
     setSubmitted(true)
+    form.reset()
     setTimeout(() => setSubmitted(false), 3000)
   }
 
@@ -50,7 +60,6 @@ export function Contact() {
       />
 
       <div className="relative mx-auto max-w-6xl px-4 md:px-8">
-        {/* Section header */}
         <div
           className={`mb-16 transition-all duration-700 ${
             isInView ? "animate-fade-up" : "opacity-0"
@@ -72,7 +81,6 @@ export function Contact() {
         </div>
 
         <div className="grid gap-10 lg:grid-cols-5">
-          {/* Contact form */}
           <div
             className={`lg:col-span-3 transition-all duration-700 delay-200 ${
               isInView ? "animate-fade-up" : "opacity-0"
@@ -82,7 +90,6 @@ export function Contact() {
               onSubmit={handleSubmit}
               className="overflow-hidden rounded-2xl border border-border bg-card"
             >
-              {/* Terminal header */}
               <div className="flex items-center gap-2 border-b border-border bg-secondary/50 px-5 py-3">
                 <div className="flex gap-1.5" aria-hidden="true">
                   <span className="h-2.5 w-2.5 rounded-full bg-destructive/60" />
@@ -97,10 +104,7 @@ export function Contact() {
               <div className="flex flex-col gap-5 p-6 md:p-8">
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="name"
-                      className="text-sm font-medium text-foreground"
-                    >
+                    <label htmlFor="name" className="text-sm font-medium text-foreground">
                       Nombre
                     </label>
                     <input
@@ -113,10 +117,7 @@ export function Contact() {
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="email"
-                      className="text-sm font-medium text-foreground"
-                    >
+                    <label htmlFor="email" className="text-sm font-medium text-foreground">
                       Email
                     </label>
                     <input
@@ -130,10 +131,7 @@ export function Contact() {
                   </div>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="subject"
-                    className="text-sm font-medium text-foreground"
-                  >
+                  <label htmlFor="subject" className="text-sm font-medium text-foreground">
                     Asunto
                   </label>
                   <input
@@ -146,10 +144,7 @@ export function Contact() {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="message"
-                    className="text-sm font-medium text-foreground"
-                  >
+                  <label htmlFor="message" className="text-sm font-medium text-foreground">
                     Mensaje
                   </label>
                   <textarea
@@ -179,20 +174,15 @@ export function Contact() {
             </form>
           </div>
 
-          {/* Social links */}
           <div className="flex flex-col gap-4 lg:col-span-2">
             {socials.map((s, i) => {
               const Icon = s.icon
               return (
-                <a
+                
                   key={s.label}
                   href={s.href}
                   target={s.href.startsWith("http") ? "_blank" : undefined}
-                  rel={
-                    s.href.startsWith("http")
-                      ? "noopener noreferrer"
-                      : undefined
-                  }
+                  rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className={`group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-primary/30 hover:shadow-md hover:shadow-primary/5 ${
                     isInView ? "animate-fade-up" : "opacity-0"
                   }`}
