@@ -2,7 +2,7 @@
 
 import { useRef, useState, type FormEvent } from "react"
 import { useInView } from "@/hooks/use-in-view"
-import { Send, Mail, MapPin, Github, Linkedin, ArrowUpRight } from "lucide-react"
+import { Send, Mail, MapPin, Github, Linkedin, ArrowUpRight, CheckCircle } from "lucide-react"
 
 const socials = [
   {
@@ -49,12 +49,21 @@ export function Contact() {
 
     setSubmitted(true)
     form.reset()
-    setTimeout(() => setSubmitted(false), 3000)
+    setTimeout(() => setSubmitted(false), 4000)
   }
 
   return (
     <section id="contact" ref={ref} className="relative py-24 md:py-32">
       <div className="pointer-events-none absolute inset-0 bg-secondary/30" aria-hidden="true" />
+
+      {/* Cartel de éxito */}
+      {submitted && (
+        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 rounded-xl border border-primary/30 bg-card px-6 py-4 shadow-xl shadow-primary/10 animate-fade-up">
+          <CheckCircle className="h-5 w-5 text-primary" />
+          <span className="text-sm font-medium text-foreground">¡Mensaje enviado con éxito!</span>
+        </div>
+      )}
+
       <div className="relative mx-auto max-w-6xl px-4 md:px-8">
         <div className={`mb-16 transition-all duration-700 ${isInView ? "animate-fade-up" : "opacity-0"}`}>
           <span className="font-mono text-xs font-medium text-primary">{"// 04. Contacto"}</span>
@@ -100,7 +109,7 @@ export function Contact() {
                 </div>
                 <button type="submit" disabled={submitted}
                   className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-sm font-medium text-primary-foreground transition-all hover:opacity-90 hover:shadow-lg hover:shadow-primary/20 disabled:opacity-60">
-                  {submitted ? "Mensaje enviado!" : (<><Send className="h-4 w-4" />Enviar mensaje</>)}
+                  {submitted ? (<><CheckCircle className="h-4 w-4" />Enviado!</>) : (<><Send className="h-4 w-4" />Enviar mensaje</>)}
                 </button>
               </div>
             </form>
@@ -109,7 +118,7 @@ export function Contact() {
             {socials.map((s, i) => {
               const Icon = s.icon
               return (
-                <a
+                
                   key={s.label}
                   href={s.href}
                   target={s.href.startsWith("http") ? "_blank" : undefined}
