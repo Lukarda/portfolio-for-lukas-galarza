@@ -15,10 +15,10 @@ const projects = [
     image: "/images/StyleSneakers.png",
   },
   {
-    title: "Parcial 1 - Plataformas de Desarrollo",
-    description: "Primer parcial de Plataformas de Desarrollo en Escuela Da Vinci.",
+    title: "Final - Plataformas de Desarrollo",
+    description: "Parcial evolutivo de Plataformas de Desarrollo en Escuela Da Vinci.",
     tags: ["CSS", "JavaScript", "HTML"],
-    github: "https://github.com/Lukarda/parcial-1-pd-acn4bv-galarza-salazar",
+    github: "https://github.com/AnthonyNadsat/final-pd-acn4bv-galarza-salazar",
     live: null,
     image: "/images/BugLogweb.jpeg",
   },
