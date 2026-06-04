@@ -109,7 +109,7 @@ export function Contact() {
             {socials.map((s, i) => {
               const Icon = s.icon
               return (
-                
+                <a
                   key={s.label}
                   href={s.href}
                   target={s.href.startsWith("http") ? "_blank" : undefined}
