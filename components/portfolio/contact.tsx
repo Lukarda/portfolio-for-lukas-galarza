@@ -118,11 +118,11 @@ export function Contact() {
             {socials.map((s, i) => {
               const Icon = s.icon
               return (
-                
+                <a
                   key={s.label}
                   href={s.href}
-                  target={s.href.startsWith("http") ? "_blank" : undefined}
-                  rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  target={s.href?.startsWith("http") ? "_blank" : undefined}
+                  rel={s.href?.startsWith("http") ? "noopener noreferrer" : undefined}
                   className={`group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-primary/30 hover:shadow-md hover:shadow-primary/5 ${isInView ? "animate-fade-up" : "opacity-0"}`}
                   style={{ animationDelay: `${(i + 3) * 100}ms` }}
                 >
